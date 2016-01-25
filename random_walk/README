@@ -1,0 +1,57 @@
+To compile and execute the serial and parallel page-rank implementations two scripts have been provided. 
+
+
+-- SERIAL PAGE RANK COMPUTATION
+
+To run the serial version, "serial_runScript" needs to be executed as following:
+We need to specify the number of threads (1 for serial) and the iterations (71 for 200K and 119 for 4M)
+
+-- Testing 200K graph
+./rw_serial_runScript.sh 200K-graph.txt 1 71 10
+
+-- Testing 4M graph
+./rw_serial_runScript.sh 4M-graph.txt 1 119 10
+
+-- The output will be present in the file "pagerank.result".
+-- The highest ranked ids will be printed on screen, and can be stored in any file.
+-- The parameter "10" specifies top ten highest rank node ids.
+
+
+-- PARALLEL PAGE RANK COMPUTATION
+
+To run the parallel version, "parallel_runScript" needs to be executed as following:
+We specify the number of threads as 8 (for 200K) and 16 (for 4M) to achieve the best performance.
+
+-- Testing 200K graph
+./rw_serial_runScript.sh 200K-graph.txt 8 71 10
+
+-- Testing 4M graph
+./rw_serial_runScript.sh 4M-graph.txt 16 119 10
+
+
+NOTE:
+-- All the "time" are outputted in "nanoseconds (ns)".
+-- To search for the timing part, please look for "gettimeofday()"
+-- results are available in "pagerank.result"
+-- The highest ranked ids will be printed on screen, and can be stored in any file.
+-- The parameter "10" specifies top ten highest rank node ids.
+
+
+The resulting output has nodes in order of their ids (0, 1, 2, 3 ...).
+To sort them, please use the following commands:
+
+tail -n +3 pagerank.result > tmp.txt
+
+sort -g -k2,2 tmp.txt > sorted_nodes.txt
+
+tail -n $4 sorted_nodes.txt > highest_ids.txt
+
+tac highest_ids.txt
+
+-- The sorted output is present in file "sorted_nodes.txt". 
+This result is in ascending order of nodes. 
+So the nodes with highest random walk values are at the end of the file.
+
+
+---------------------------------------x---------------------------------------------
+
