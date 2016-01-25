@@ -1,0 +1,33 @@
+To compile and execute the serial and parallel page-rank implementations two scripts have been provided. 
+
+
+-- SERIAL PAGE RANK COMPUTATION
+
+To run the serial version, "serial_runScript" needs to be executed as following:
+./serial_runScript.sh 200K-graph.txt
+
+-- Here instead of the 200K-graph.txt, any other input graph can also be passed. The output will be present in the file "pagerank.result".
+
+
+
+-- PARALLEL PAGE RANK COMPUTATION
+
+To run the parallel version, "parallel_runScript" needs to be executed as following:
+./parallel_runScript.sh <input-graph>
+
+Example:
+./parallel_runScript.sh 4M-graph.txt 
+
+-- Here:	input-graph 		--> 200K-graph.txt
+
+-- Instead of these arguments any other arguments can also be placed.
+
+
+NOTE:
+-- All the "time" are outputted in "nanoseconds (ns)".
+-- To search for the timing part, please look for "gettimeofday()"
+-- results are available in "pagerank.result"
+
+
+---------------------------------------x---------------------------------------------
+
